@@ -1,11 +1,13 @@
 const Discord = require('discord.js')
 const bot = new Discord.Client()
 
-const token = 'Njc3OTk3MjI3MTIxMTgwNjc0.XkcaVA.BwMOgihIoEMoKK-0VmxLdeWDOEY' 
+
+
+const token = process.env['DISCORD_BOT_TOKEN'];
 
 const prefix = "!";
 
-var version = '1.0.1'
+var version = '1.0.1';
 
 bot.on('ready', () =>{
     console.log('The Plague has taken over!');
@@ -54,8 +56,10 @@ bot.on('message', msg =>{
 
             case 'lDru':
                 const lDru = new Discord.RichEmbed()
-                const attachment = new
-                img class="logo" src="file:///C:/Users/Dru's%20PC/Pictures/Plague%20Doctor/3541338_0.jpg" alt="My_Logo"
+                const attachment = new Image()
+                // .setClass('logo')
+                // .setSrc("file:///C:/Users/Dru's%20PC/Pictures/Plague%20Doctor/3541338_0.jpg")
+                // img class="logo" src="file:///C:/Users/Dru's%20PC/Pictures/Plague%20Doctor/3541338_0.jpg" alt="My_Logo"
                 .setTitle('Drus Media')
                 .addField('Twitch', 'https://www.twitch.tv/ldruskii/')
                 .addField('Twitter', 'https://twitter.com/lDruskii')
@@ -68,4 +72,11 @@ bot.on('message', msg =>{
     }
 })
 
-bot.login(token);
+if(!token) {
+    console.log('Token not present')
+} else {
+    bot.login(token)
+    .catch(err => {
+        console.log(`An error has occured here, catching so Node will not crash. Error: ${JSON.stringify(err)}`)
+    })
+}
