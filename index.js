@@ -9,11 +9,11 @@ const prefix = "!";
 
 var version = '1.0.1';
 
-bot.on('ready', () =>{
+bot.on('ready', () => {
     console.log('The Plague has taken over!');
 })
 
-bot.on('message', msg =>{
+bot.on('message', msg => {
     
     let args = msg.content.substring(prefix.length).split(" ");
 
@@ -54,21 +54,21 @@ bot.on('message', msg =>{
             msg.channel.sendEmbed(embed);
             break;
 
-            case 'lDru':
-                const lDru = new Discord.RichEmbed()
-                const attachment = new Image()
-                // .setClass('logo')
-                // .setSrc("file:///C:/Users/Dru's%20PC/Pictures/Plague%20Doctor/3541338_0.jpg")
-                // img class="logo" src="file:///C:/Users/Dru's%20PC/Pictures/Plague%20Doctor/3541338_0.jpg" alt="My_Logo"
-                .setTitle('Drus Media')
-                .addField('Twitch', 'https://www.twitch.tv/ldruskii/')
-                .addField('Twitter', 'https://twitter.com/lDruskii')
-                .addField('Youtube', 'https://bit.ly/2UX4Ou2')
-                .setColor(0x2D58A6)
-                .setThumbnail(msg.author.img)
-                .setFooter('Please follow and subcribe, it really helps out a lot!')
-                msg.channel.sendEmbed(lDru);
-                break;
+        case 'lDru':
+            const lDru = new Discord.RichEmbed()
+            const attachment = new Image()
+            // .setClass('logo')
+            // .setSrc("file:///C:/Users/Dru's%20PC/Pictures/Plague%20Doctor/3541338_0.jpg")
+            // img class="logo" src="file:///C:/Users/Dru's%20PC/Pictures/Plague%20Doctor/3541338_0.jpg" alt="My_Logo"
+            .setTitle('Drus Media')
+            .addField('Twitch', 'https://www.twitch.tv/ldruskii/')
+            .addField('Twitter', 'https://twitter.com/lDruskii')
+            .addField('Youtube', 'https://bit.ly/2UX4Ou2')
+            .setColor(0x2D58A6)
+            .setThumbnail(msg.author.img)
+            .setFooter('Please follow and subcribe, it really helps out a lot!')
+            msg.channel.sendEmbed(lDru);
+            break;
     }
 })
 
