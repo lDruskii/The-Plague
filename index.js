@@ -1,7 +1,8 @@
 const Discord = require('discord.js')
 const bot = new Discord.Client()
 const AntiSpam = require('discord-anti-spam');
-
+const ytSearch = require('yt-search');
+const ytPlayer = require('youtube-dl');
 
 const ADMIN_ROLES = ['Plague Doctor', 'Mad Doctor'];
 
@@ -103,8 +104,40 @@ bot.on('message', msg => {
             .setFooter('Please follow and subcribe, it really helps out a lot!')
             msg.channel.send(lDru);
             break;
+
+        case 'plays':
+            args.splice(0, 1)
+            let selection = args.join(" ")
+            YoutubePlayer(selection, bot, msg)
+            break;
     }
 })
+
+const YoutubePlayer = (songName, client, message) => {
+    return ytSearch(songName)
+    .then((results) => {
+        console.log(results.videos[0]);
+        return results.videos[0].url;
+    })
+    .then(videoUrl => {
+        let video = ytPlayer(videoUrl, [], { filter : 'audioonly' });
+        let channel = message.member.voiceChannel;
+        if(!channel) {
+            message.reply('You must be in a voice channel to do this.');
+            return;
+        }
+
+
+        return channel.join().then(connection => {
+            const dispatcher = connection.playStream(video, {})
+
+        })
+    })
+    .catch(err => {
+        console.dir(err)
+        msg.reply("Sorry, I'm broken right now!")
+    })
+}
 
 if(!token) {
     throw new Error('DISCORD_BOT_TOKEN not found')
