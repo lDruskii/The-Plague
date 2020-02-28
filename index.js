@@ -105,7 +105,7 @@ bot.on('message', msg => {
             msg.channel.send(lDru);
             break;
 
-        case 'plays':
+        case 'pm':
             args.splice(0, 1)
             let selection = args.join(" ")
             YoutubePlayer(selection, bot, msg)
@@ -130,12 +130,19 @@ const YoutubePlayer = (songName, client, message) => {
 
         return channel.join().then(connection => {
             const dispatcher = connection.playStream(video, {})
+		dispatcher.on('end', () => {
+			channel.leave();	
+		})
+		.on('error', err => {
+			channel.leave();
+			console.dir(err)
+		})
 
         })
     })
     .catch(err => {
         console.dir(err)
-        msg.reply("Sorry, I'm broken right now!")
+        message.reply("Sorry, I'm broken right now!")
     })
 }
 
