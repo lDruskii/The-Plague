@@ -9,6 +9,7 @@
   "author": "Dru",
   "license": "ISC",
   "dependencies": {
+    "discord-anti-spam": "^2.3.5",
     "discord.js": "^11.5.1",
     "nodemon": "^2.0.2"
   }
