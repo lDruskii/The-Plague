@@ -1,6 +1,24 @@
 const Discord = require('discord.js')
 const bot = new Discord.Client()
+const AntiSpam = require('discord-anti-spam');
 
+
+const antiSpamClient = new AntiSpam({
+    warnThreshold: 5,
+    kickThreshold: 7,
+    banThreshold: 7,
+    maxInterval: 2000,
+    warnMessage: '{@user}, Please stop spamming.',
+    banMessage: '**{user_tag}** has been banned for spamming',
+    kickMessage: '**{user_tag}** has been banned for spamming',
+    maxDuplicatesWarning: 7,
+    maxDuplicatesKick: 10,
+    maxDuplicatesBan: 12, 
+    exemptPermissions: [ 'ADMINISTRATOR'],
+    ignoreBots: false, 
+    verbose: true,
+    ignoredUsers: [],
+})
 
 
 const token = process.env['DISCORD_BOT_TOKEN'];
@@ -15,6 +33,7 @@ bot.on('ready', () => {
 
 bot.on('message', msg => {
     
+    antiSpamClient.message(msg);
     let args = msg.content.substring(prefix.length).split(" ");
 
     switch(args[0]){
@@ -33,7 +52,7 @@ bot.on('message', msg => {
         case 'info':
             if(args[1] === 'version'){
                 msg.channel.sendMessage('Version ' + version);
-            }else{
+            } else {
                 msg.channel.sendMessage('Invalid Args')
             }
             break;
@@ -53,13 +72,9 @@ bot.on('message', msg => {
             .setFooter('Test')
             msg.channel.sendEmbed(embed);
             break;
-
         case 'lDru':
             const lDru = new Discord.RichEmbed()
-            const attachment = new Image()
-            // .setClass('logo')
-            // .setSrc("file:///C:/Users/Dru's%20PC/Pictures/Plague%20Doctor/3541338_0.jpg")
-            // img class="logo" src="file:///C:/Users/Dru's%20PC/Pictures/Plague%20Doctor/3541338_0.jpg" alt="My_Logo"
+            .setImage("file:///C:/Users/Dru's%20PC/Pictures/Plague%20Doctor/3541338_0.jpg")
             .setTitle('Drus Media')
             .addField('Twitch', 'https://www.twitch.tv/ldruskii/')
             .addField('Twitter', 'https://twitter.com/lDruskii')
