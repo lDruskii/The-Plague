@@ -93,7 +93,7 @@ bot.on('message', msg => {
 
         case 'ldru':
             const lDru = new Discord.RichEmbed()
-            .setImage("https://res.cloudinary.com/teepublic/image/private/s--PRvSaisI--/t_Resized%20Artwork/c_fit,g_north_west,h_954,w_954/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_jpg,h_630,q_90,w_630/v1542720478/production/designs/3541338_0.jpg")
+            .setImage("https://i3.sndcdn.com/avatars-dmPQwZHSfv34Hb2l-ZaBa8g-t500x500.jpg")
             .setTitle('Drus Media')
             .addField('Twitch', 'https://www.twitch.tv/ldruskii/')
             .addField('Twitter', 'https://twitter.com/lDruskii')
