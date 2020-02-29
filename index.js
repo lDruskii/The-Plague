@@ -110,9 +110,16 @@ bot.on('message', msg => {
             let selection = args.join(" ")
             YoutubePlayer(selection, bot, msg)
             break;
+        
+            
     }
 })
 
+
+/*
+    This needs lots of iteration. We should store the instance of a player to be able to start / stop / cancel songs, as well as queue songs with the instance
+    We also have no way of completely stopping a player, and having the bot leave the channel
+*/
 const YoutubePlayer = (songName, client, message) => {
     return ytSearch(songName)
     .then((results) => {
