@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon bot.js"
   },
   "author": "Dru",
   "license": "ISC",
@@ -13,7 +13,11 @@
     "discord.js": "^11.5.1",
     "nodemon": "^2.0.2",
     "opusscript": "0.0.7",
-    "youtube-dl": "^3.0.2",
+    "typescript": "^3.8.3",
+    "youtube-dl": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.7",
     "yt-search": "^1.1.2"
   }
 }
