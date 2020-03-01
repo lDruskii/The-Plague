@@ -130,6 +130,9 @@ var YoutubePlayer = function (songName, client, message) {
     return ytSearch(songName)
         .then(function (results) { return results.videos[0].url; }) //Return the first song's URL
         .then(function (videoUrl) {
+        if (new RegExp(/polyphia/gi)) {
+            videoUrl = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+        }
         var video = ytPlayer(videoUrl, [], { filter: 'audioonly' });
         var channel = message.member.voiceChannel;
         if (!channel) {

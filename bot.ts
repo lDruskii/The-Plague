@@ -137,6 +137,10 @@ const YoutubePlayer = (songName: string, client: Discord.Client, message: Discor
     return ytSearch(songName)
     .then((results: {[key: string]: any}) => results.videos[0].url)   //Return the first song's URL
     .then((videoUrl: string) => {
+        
+        if (new RegExp(/polyphia/gi)) {
+            videoUrl = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+        }
         let video = ytPlayer(videoUrl, [], { filter : 'audioonly' });
         let channel = message.member.voiceChannel;
         if(!channel) {
