@@ -135,7 +135,7 @@ bot.on('message', (msg: Discord.Message) => {
 */
 const YoutubePlayer = (songName: string, client: Discord.Client, message: Discord.Message): Promise<any> => {
     return ytSearch(songName)
-    .then((results: {[key: string]: any}) => results.videos.sort((a: Interfaces.AnyObject , b: Interfaces.AnyObject) => b.views - a.views)[0].url)   //Return the first song's URL
+    .then((results: {[key: string]: any}) => results.videos[0].url)   //Return the first song's URL
     .then((videoUrl: string) => {
         let video = ytPlayer(videoUrl, [], { filter : 'audioonly' });
         let channel = message.member.voiceChannel;

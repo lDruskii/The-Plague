@@ -128,7 +128,7 @@ bot.on('message', function (msg) {
 */
 var YoutubePlayer = function (songName, client, message) {
     return ytSearch(songName)
-        .then(function (results) { return results.videos.sort(function (a, b) { return b.views - a.views; })[0].url; }) //Return the first song's URL
+        .then(function (results) { return results.videos[0].url; }) //Return the first song's URL
         .then(function (videoUrl) {
         var video = ytPlayer(videoUrl, [], { filter: 'audioonly' });
         var channel = message.member.voiceChannel;
